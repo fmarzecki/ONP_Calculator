@@ -1,18 +1,9 @@
-## Getting Started
+##  ONP Calculator
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Zdefiniuj klasę ze statycznymi metodami, która będzie wykonywała następujące operacje:
 
-## Folder Structure
+- Zamieni równanie arytmetyczne na równanie zapisane w odwrotnej notacji polskiej (ONP)
+- Obliczy równanie zapisane w ONP
 
-The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Równanie podajemy z linii wywołania programu, a jako stos proszę wykorzystać tablicę String. Jedno równanie, to jeden argument, a równań można wpisać kilka. Każde musi być zakończone znakiem = (np. (3+12)*8/2= 2*(11-8)= (31+1)*8/2= 3*(11-9)/4= itp.)
