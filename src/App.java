@@ -21,11 +21,10 @@ public class App {
 
         int stackSize = -1;
 
-        for (int i = 0; i < equation.length(); i++) {
+        for (int i = 0; i < equation.length()-1; i++) {
             element = Character.toString(equation.charAt(i));
-                   
-            // Gdy wyrazenie sie zakonczy dodaj reszte stosu na wyjscie
-            if (element.equals("=")) {
+                 
+            if (element.equals("=")) {                      // Gdy wyrazenie sie zakonczy dodaj reszte stosu na wyjscie
                 output += number;
                 if (!output.endsWith(" ")) {
                     output += " ";
@@ -36,16 +35,10 @@ public class App {
                 break;
             }
 
-            // Gdy element jest liczba
-            if (getPriority(element) == -1) {
-
-                // Dodawaj element dopoki nie natrafisz na operator
-                // Aby wziac pod uwage liczby wielocyfrowe
+            if (getPriority(element) == -1) {               // Gdy element jest liczba dodawaj go dopoki nie natrafisz na operator
                 number += element;
             }
-
-            // Gdy element nie jest liczba
-            else {
+            else {                                          // Gdy element nie jest liczba
                 output += number;
                 number = "";
 
@@ -53,16 +46,13 @@ public class App {
                     output += " ";
                 }
 
-                // Gdy element to nawias otwierajacy, dodaj go na stos
-                if (element.equals("(")) {
+                
+                if (element.equals("(")) {                  // Gdy element to nawias otwierajacy, dodaj go na stos
                     stackSize++;
                     stack[stackSize] = element;
                 }
-
-                // Gdy element to nawias zamykajacy, zdejmuj ze stosu i dodawaj na wyjscie
-                // dopoki nie natrafisz na nawias otwierajacy
-                else if (element.equals(")")) {
-                   while(!stack[stackSize].equals("(")) {
+                else if (element.equals(")")) {             // Gdy element to nawias zamykajacy, zdejmuj ze stosu i dodawaj na wyjscie
+                   while(!stack[stackSize].equals("(")) {   // dopoki nie natrafisz na nawias otwierajacy, usun nawias ze stosu
                         output += stack[stackSize];
                         if (!output.endsWith(" ")) {
                             output += " ";
@@ -72,30 +62,22 @@ public class App {
                    stackSize--;
                 }
 
-                // Gdy element to jeden z operatorow
-                else  {
-                    // Jesli jest to pierwszy element na stosie
-                    if (stackSize == -1) {
+                else  {                                     // Gdy element to jeden z operatorow
+                    
+                    if (stackSize == -1) {                  // Jesli jest to pierwszy element na stosie
                         stackSize++;
                         stack[stackSize] = element;
                         continue;
                     }
-
-                    /* 
-                        jesli badany operator ma mniejszy priorytet od operatora na szczycie stosu
-                        zdejmujemy ze stosu i dodajemy na wyjscie operatory o priorytecie mniejszym
-                        badz rownym lub dopoki stos nie bedzie pusty, nastepnie dodajey badany operator
-                    */  
-                    if (getPriority(element) <= getPriority(stack[stackSize])) {
-                        while (stackSize >= 0 && getPriority(element) <= getPriority(stack[stackSize]) ) {
-                            output += stack[stackSize] + " ";
+                    if (getPriority(element) <= getPriority(stack[stackSize])) {                            //jesli badany operator ma mniejszy priorytet od operatora na szczycie stosu
+                        while (stackSize >= 0 && getPriority(element) <= getPriority(stack[stackSize]) ) {  //zdejmujemy ze stosu i dodajemy na wyjscie operatory o priorytecie mniejszym
+                            output += stack[stackSize] + " ";                                               // badz rownym lub dopoki stos nie bedzie pusty, nastepnie dodajey badany operator
                             stackSize--;
                         }
                         stackSize++;
                         stack[stackSize] = element;
                     }
-                    // Jesli badany operator ma wiekszy priorytet, dodajemy go na stos
-                    else {
+                    else {                                  // Jesli badany operator ma wiekszy priorytet od operatora na szycie stosu, dodajemy go na stos
                         stackSize++;
                         stack[stackSize] = element;
                     }
