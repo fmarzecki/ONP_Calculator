@@ -72,28 +72,27 @@ public class App {
         for (int j = stackSize; j >= 0; j--) {
             output += stack[j]  + " ";
         }
-
         return output;
     }
 
-    static int calculateONP(String onp) {
+    static double calculateONP(String onp) {
         String[] onpArray = onp.split(" ");
-        int[] stack = new int[20];
+        double[] stack = new double[20];
 
-        int result = 0;
+        double result = 0;
         int stackSize = -1;
 
-        // printTable(onpArray);
         for (int i = 0; i < onpArray.length; i++) {
 
             // Jesli element jest liczba poloz na stos
             if (getPriority(onpArray[i]) == -1) {
                 stackSize++;
-                stack[stackSize] = Integer.parseInt(onpArray[i]);
+                stack[stackSize] = Double.parseDouble(onpArray[i]);
             }
 
-            // Jesli element jest operatorem zdejmij ze stosu dwie ostatnie liczby
-            // i wykonaj na nich podana operacje
+            /**
+            * Jesli element jest operatorem zdejmij ze stosu dwie ostatnie liczby
+            */ 
             else {
                 result = operation(stack[stackSize-1],stack[stackSize],onpArray[i]);
                 stackSize--;
@@ -109,7 +108,7 @@ public class App {
         }
     }
 
-    static int operation(int a, int b, String operator) {
+    static double operation(double a, double b, String operator) {
         switch(operator) {
             case "+":
                 return a+b;
@@ -122,7 +121,7 @@ public class App {
             case "%":
                 return a%b;
             case "^":
-                return (int)Math.pow(a, b);
+                return Math.pow(a, b);
             default:
                 return 0;
         }
