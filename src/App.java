@@ -3,6 +3,7 @@ public class App {
     static String operators[] = {"(", "+-)", "*/%", "^"};
     static String equation = "12+2*(3*4+10/5)=";
 
+
     static int getPriority(String s) {
         for (int i = 0; i < operators.length; i++) {
             if (operators[i].contains(s)) {
@@ -159,6 +160,5 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("ONP = " + convertToOnp(equation));
         System.out.println("WYNIK ONP = " + calculateONP(convertToOnp(equation)));
-
     }
 }
