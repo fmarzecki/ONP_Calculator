@@ -133,4 +133,4 @@ public class App {
             System.out.println("WYNIK ONP = " + calculateONP(convertToOnp(onp)));
         }
     }
-}
+}  
