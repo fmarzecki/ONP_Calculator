@@ -1,8 +1,16 @@
 
 public class App {
+
     static String operators[] = {"(", "+-)", "*/%", "^"};
     static String equation = "5+(1+2)*4-3=";
 
+    final void printHi(String s) {
+        System.out.println(s);
+    }
+
+    void printHello(String s) {
+        System.out.println(s);
+    }
     static int getPriority(String s) {
         for (int i = 0; i < operators.length; i++) {
             if (operators[i].contains(s)) {
@@ -28,7 +36,7 @@ public class App {
             }
             else {                                          // Gdy element nie jest liczba
                 output += number;
-                output += output.endsWith(" ") ? "" : " ";
+                output += output.equals("") || output.endsWith(" ") ? "" : " ";
                 number = "";
                 
                 if (element.equals("(")) {                  // Gdy element to nawias otwierajacy, dodaj go na stos
@@ -89,10 +97,7 @@ public class App {
                 stackSize++;
                 stack[stackSize] = Double.parseDouble(onpArray[i]);
             }
-
-            /**
-            * Jesli element jest operatorem zdejmij ze stosu dwie ostatnie liczby
-            */ 
+            // Jesli element jest operatorem zdejmij ze stosu dwie ostatnie liczby
             else {
                 result = operation(stack[stackSize-1],stack[stackSize],onpArray[i]);
                 stackSize--;
