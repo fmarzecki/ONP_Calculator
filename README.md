@@ -1,9 +1,8 @@
-##  ONP Calculator
+## ONP Calculator
 
-Zdefiniuj klasę ze statycznymi metodami, która będzie wykonywała następujące operacje:
+Define a class with static methods that will perform the following operations:
 
-- Zamieni równanie arytmetyczne na równanie zapisane w odwrotnej notacji polskiej (ONP)
-- Obliczy równanie zapisane w ONP 
+- Convert an arithmetic equation to an equation written in Reverse Polish Notation (RPN)
+- Calculate the equation written in RPN
 
-
-Równanie podajemy z linii wywołania programu, a jako stos proszę wykorzystać tablicę String. Jedno równanie, to jeden argument, a równań można wpisać kilka. Każde musi być zakończone znakiem = (np. (3+12)*8/2= 2*(11-8)= (31+1)*8/2= 3*(11-9)/4= itp.)
+The equation is provided from the command line of the program, and a String array is used as the stack. One equation is one argument, and several equations can be entered. Each equation must end with the = sign (for example, (3+12)8/2= 2(11-8)= (31+1)8/2= 3(11-9)/4=, etc.).
